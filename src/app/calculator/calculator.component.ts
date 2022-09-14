@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CalculatorLogic } from './calculator-logic';
 
 
@@ -25,7 +25,7 @@ export class CalculatorComponent implements OnInit {
   isNewCalc = false; //Flag if is a new calculation
   isResult = false; //Flag if the number displayed is the result
 
-  arrayHistory: string[] = [];
+  arrayHistory: string[] = []; //Array of th history of calculations
 
   setInputNumber(x: string) {
     if (this.inputNumber === "0" || this.isNewCalc) {
@@ -66,15 +66,14 @@ export class CalculatorComponent implements OnInit {
     this.arrFullCalc.push(this.inputNumber);
     this.prevInputNumber = this.arrFullCalc.join(" ") + " =";
 
-    let calculator = new CalculatorLogic();
+    let calculator = new CalculatorLogic(); //Calculator Logic class
     this.result = calculator.calculate(this.arrFullCalc)
     this.inputNumber = this.result.toString();
 
     //Add calculation to history
     this.arrayHistory.push(this.prevInputNumber + " " + this.inputNumber);
-    console.log(this.arrayHistory)
 
-    //To reset variable fro a new calculation
+    //To reset variable for a new calculation
     this.arrFullCalc = [];
 
     this.isNewCalc = true;

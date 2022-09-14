@@ -37,6 +37,7 @@
 
     <div [ngClass]="historyContainerCSS">
         <h3>History</h3>
-        <p *ngFor="let log of arrayHistory.slice().reverse()">{{log}}</p>
+        <!-- note: use array.slice().reverse() to have the reverse order of the array -->
+        <p *ngFor="let log of arrayHistory.slice().reverse()">{{log}}</p> 
     </div>
 </div>

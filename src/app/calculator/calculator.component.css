@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 /* import Google Font*/
 
-/* CSS title of project */
-.title{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-    color: #ffc107;
+:host { /* :root does not work, instead, use :host */
+    --main-font-family: 'Roboto', sans-serif;
+    --second-color: #ffc107;
 }
+
+/* CSS title of project */
+.title {
+    font-family: var(--main-font-family);
+    font-weight: 900;
+    color: var(--second-color);
+}
+
 /* CSS for the mai container*/
 .main-container {
     display: flex;
@@ -19,7 +25,7 @@
 
 /* CSS for the primary text displayed in the calculator*/
 .text-displayed-01 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--main-font-family);
     font-weight: 500;
 
     word-wrap: break-word;
@@ -27,23 +33,23 @@
 
 /* CSS for the secondary text displayed in the calculator*/
 .text-displayed-02 {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--main-font-family);
     font-weight: 100;
 }
 
-/* CSS for the container of history */
+/* CSS for the history elements */
 .history-container {
     width: 300px;
     flex: 550px;
     overflow-y: auto;
     background-color: #212529;
 
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--main-font-family);
     font-weight: 100;
 }
 
 .history-container>h3 {
-    color: #ffc107;
+    color: var(--second-color);
     text-align: center;
 }
 
