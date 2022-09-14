@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap'); /* import Google Font*/
+
+/* CSS for the primary text displayed in the calculator*/
+.text-displayed-01 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+/* CSS for the secondary text displayed in the calculator*/
+.text-displayed-02 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}

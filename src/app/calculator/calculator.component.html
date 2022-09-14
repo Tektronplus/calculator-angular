@@ -1,0 +1,35 @@
+<p>Calcuator</p>
+<div [ngClass]="calculatorCSS" [ngStyle]="{'max-width':'300px'}">
+    <!-- Display of Calculator -->
+    <div class="container bg-light rounded text-end">
+        <p [ngClass]="prevTextDisplayed">{{prevInputNumber}}</p>
+        <p [ngClass]="mainTextDisplayed" [ngStyle]="{'color': isResult ? '#d19d00' : ''}">{{inputNumber}}</p>
+    </div>
+
+    <!-- Keys of Calculator -->
+    <div class="row row-cols-4 g-1">        
+        <div class="col"><button class="w-100 btn btn-warning" (click)="cancKey()">C</button></div>
+        <div class="col"><button class="w-100 btn btn-warning" (click)="delKey()">Del</button></div>
+        <div class="col"><button class="w-100 btn btn-warning">%</button></div>
+        <div class="col"><button class="w-100 btn btn-warning" (click)="addOperation('/')">/</button></div>
+
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('7')">7</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('8')">8</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('9')">9</button></div>
+        <div class="col"><button class="w-100 btn btn-warning" (click)="addOperation('x')">x</button></div>
+
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('4')">4</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('5')">5</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('6')">6</button></div>
+        <div class="col"><button class="w-100 btn btn-warning" (click)="addOperation('+')">+</button></div>
+
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('1')">1</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('2')">2</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('3')">3</button></div>
+        <div class="col"><button class="w-100 btn btn-warning" (click)="addOperation('-')">-</button></div>
+
+        <div class="col-6"><button class="w-100 btn btn-secondary" (click)="setInputNumber('0')">0</button></div>
+        <div class="col"><button class="w-100 btn btn-secondary" (click)="setInputNumber('.')">.</button></div>
+        <div class="col"><button class="w-100 btn btn-warning" (click)="equalKey()">=</button></div>
+    </div>
+</div>
