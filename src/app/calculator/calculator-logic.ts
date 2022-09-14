@@ -76,6 +76,9 @@ export class CalculatorLogic {
             case '-':
                 resultOfSingleOperation = numA - numB;
                 break;
+            case '%':
+                resultOfSingleOperation = (numA / numB)*100;
+                break;
         }
 
         resultOfSingleOperation = resultOfSingleOperation.toFixed(6).toString(); //Set the precision of decimal digits and stringify the result for the array

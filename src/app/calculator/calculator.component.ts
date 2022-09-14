@@ -42,6 +42,7 @@ export class CalculatorComponent implements OnInit {
   addOperation(op: string) {
     this.arrFullCalc.push(this.inputNumber);
     this.arrFullCalc.push(op);
+    
     this.inputNumber = "0";
     this.prevInputNumber = this.arrFullCalc.join(" ")
   }

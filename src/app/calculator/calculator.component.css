@@ -4,6 +4,8 @@
 .text-displayed-01 {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
+
+    word-wrap: break-word;
 }
 
 /* CSS for the secondary text displayed in the calculator*/
