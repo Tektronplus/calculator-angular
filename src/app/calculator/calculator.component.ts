@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { CalculatorLogic } from './calculator-logic';
 
 
@@ -9,13 +9,13 @@ import { CalculatorLogic } from './calculator-logic';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
   }
 
   /* === METHODS === */
-  
+
   /*VARIABLES*/
   arrFullCalc: string[] = []; //All the operations of the calculation
   inputNumber: string = "0"; //The current number displayed
@@ -25,6 +25,7 @@ export class CalculatorComponent implements OnInit {
   isNewCalc = false; //Flag if is a new calculation
   isResult = false; //Flag if the number displayed is the result
 
+  arrayHistory: string[] = [];
 
   setInputNumber(x: string) {
     if (this.inputNumber === "0" || this.isNewCalc) {
@@ -42,7 +43,7 @@ export class CalculatorComponent implements OnInit {
   addOperation(op: string) {
     this.arrFullCalc.push(this.inputNumber);
     this.arrFullCalc.push(op);
-    
+
     this.inputNumber = "0";
     this.prevInputNumber = this.arrFullCalc.join(" ")
   }
@@ -69,6 +70,10 @@ export class CalculatorComponent implements OnInit {
     this.result = calculator.calculate(this.arrFullCalc)
     this.inputNumber = this.result.toString();
 
+    //Add calculation to history
+    this.arrayHistory.push(this.prevInputNumber + " " + this.inputNumber);
+    console.log(this.arrayHistory)
+
     //To reset variable fro a new calculation
     this.arrFullCalc = [];
 
@@ -77,7 +82,9 @@ export class CalculatorComponent implements OnInit {
   }
 
   /* === CSS VARIABLES === */
+  titleCSS: string = "title fs-1";
   calculatorCSS: string = "container text-center border border-3 border-secondary bg-dark bg-gradient rounded-4 p-3";
   mainTextDisplayed: string = "text-displayed-01 fs-1"
   prevTextDisplayed: string = "text-displayed-02 fs-6 m-0"
+  historyContainerCSS: string = "history-container border border-2 border-secondary rounded px-1";
 }

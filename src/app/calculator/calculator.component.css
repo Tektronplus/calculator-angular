@@ -1,4 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap'); /* import Google Font*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+/* import Google Font*/
+
+/* CSS title of project */
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: #ffc107;
+}
+/* CSS for the mai container*/
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+
+    background-color: rgb(50, 50, 50);
+}
 
 /* CSS for the primary text displayed in the calculator*/
 .text-displayed-01 {
@@ -12,4 +29,29 @@
 .text-displayed-02 {
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+}
+
+/* CSS for the container of history */
+.history-container {
+    width: 300px;
+    flex: 550px;
+    overflow-y: auto;
+    background-color: #212529;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+.history-container>h3 {
+    color: #ffc107;
+    text-align: center;
+}
+
+.history-container>p {
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border-top: 1px dotted rgb(100, 100, 100);
+    color: white;
 }
