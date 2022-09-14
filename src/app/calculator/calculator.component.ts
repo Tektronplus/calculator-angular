@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CalculatorLogic } from './calculator-logic';
+
 
 @Component({
   selector: 'app-calculator',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculatorComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
@@ -60,82 +62,17 @@ export class CalculatorComponent implements OnInit {
 
   equalKey() {
     this.arrFullCalc.push(this.inputNumber);
-    let fullCalculation: string = this.arrFullCalc.join(" ") + " =";
-    this.mainCalculator(); //calculation of result 
-    this.prevInputNumber = fullCalculation;
+    this.prevInputNumber = this.arrFullCalc.join(" ") + " =";
 
-
-    this.arrFullCalc = [];
+    let calculator = new CalculatorLogic();
+    this.result = calculator.calculate(this.arrFullCalc)
     this.inputNumber = this.result.toString();
+
+    //To reset variable fro a new calculation
+    this.arrFullCalc = [];
 
     this.isNewCalc = true;
     this.isResult = true;
-  }
-
-  /*  
-    Explanation:
-    - mainCalculator() => Calculate the singles operations until the array "arrFullCalc" contains elements equal 
-    to or greater than 3 elements.
-    - findIndex() => The function finds the index of arithmetic operations, following the rules of mathematics,
-      i.e. the function first takes the index of multiplications and divisions in order, then takes the sums 
-      and subtractions still in order.
-    - changeArr() => After take index of the arithmertic operation as argument, it takes the number before and 
-    after the index,replace the 3 values [numberA, arit-oper, numberB] with the result of the operation. 
-   */
-  mainCalculator() {
-    while(this.arrFullCalc.length >= 3){ 
-      this.changeArr(this.findIndex())
-    }
-    this.result = parseFloat(this.arrFullCalc[0]);
-  }
-  findIndex(): number {
-    let index: number;
-    let indexMul = this.arrFullCalc.indexOf('x');
-    let indexDiv = this.arrFullCalc.indexOf('/');
-    let indexPlus = this.arrFullCalc.indexOf('+');
-    let indexLess = this.arrFullCalc.indexOf('-');
-
-    if (indexMul != -1 && indexDiv != -1) {
-      index = indexMul > indexDiv ? indexDiv : indexMul;
-    } else if (indexMul != -1 || indexDiv != -1) {
-      index = indexMul == -1 ? indexDiv : indexMul;
-    } else {
-      if (indexPlus != -1 && indexLess != -1) {
-        index = indexPlus > indexLess ? indexLess : indexPlus;
-      } else if (indexPlus != -1 || indexLess != -1) {
-        index = indexPlus == -1 ? indexLess : indexPlus;
-      }
-    }
-
-    return index;
-  }
-  changeArr(indexOp: number) {
-    let singleCalc = this.arrFullCalc.splice(indexOp - 1, 3);
-    this.arrFullCalc.splice(indexOp - 1, 0, this.calculator(singleCalc)); //Substitute the operation with the result 
-  }
-
-  calculator(arr): string { //Pass an array of 3 elements e.g. [number-A, arithmetic-sign, number-B]
-    let result;
-    let numA: number = parseFloat(arr[0]);
-    let numB: number = parseFloat(arr[2]);
-
-    switch (arr[1]) {
-      case 'x':
-        result = numA * numB;
-        break;
-      case '/':
-        result = numA / numB;
-        break;
-      case '+':
-        result = numA + numB;
-        break;
-      case '-':
-        result = numA - numB;
-        break;
-    }
-
-    result = result.toFixed(6).toString(); //Set the precision of decimal digits and stringify the result for the array
-    return result;
   }
 
   /* === CSS VARIABLES === */
